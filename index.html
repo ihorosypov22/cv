@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ihor Osypov - IT Engineer</title>
+  <style>
+    :root{
+      --background-light-color: #ffffff;
+      --text-color-hover: #00adb5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: #f0f0f0;
+      color: #000;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 100%;
+      background: #0d1b2a;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 0px;
+    }
+    .sidebar a {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      text-decoration: none;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 1px solid #1b263b;
+      transition: background 0.3s, color 0.3s;
+    }
+    .sidebar a:hover {
+      background: #00adb5;
+      color: #0f0f0f;
+    }
+    .name-btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      padding: 15px;
+      border-bottom: 1px solid #1b263b;
+      transition: background 0.3s, color 0.3s;
+    }
+    .name-btn:hover {
+      background: #00adb5;
+      color: #0f0f0f;
+    }
+    .big-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      display: block;
+      line-height: 1;
+    }
+    .small-role {
+      font-size: 0.8rem;
+      display: block;
+      line-height: 7mm;
+      color: #ccc;
+      transition: color 0.3s;
+    }
+    .name-btn:hover .big-name,
+    .name-btn:hover .small-role {
+      color: #000;
+    }
+
+    .socials {
+      margin-top: auto;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 15px;
+    }
+    .socials a {
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+    .socials a:hover {
+      color: #00adb5;
+    }
+
+    /* Main content */
+    main {
+      margin-left: 200px;
+      width: calc(100% - 200px);
+    }
+    section {
+      min-height: 100vh;
+      padding: 100px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1), transparent);
+    }
+
+    /* Home Section */
+    #home {
+      background: #1b263b;
+      color: #fff;
+      text-align: left;
+      padding-left: 90px;
+    }
+    #home h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    #home h2 span {
+      color: #00adb5;
+    }
+    #home p {
+      font-size: 1.2rem;
+      color: #ccc;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+    .contact-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: 1px solid #00adb5;
+      background: transparent;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s;
+      width: auto;
+      max-width: fit-content;
+    }
+    .contact-btn:hover {
+      background: #00adb5;
+      color: #0f0f0f;
+    }
+    .decor-right {
+      position: absolute;
+      font-size: 0.8rem;
+      color: #888;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing: 2px;
+      right: 10px;
+      bottom: 20px;
+      transform: rotate(0deg);
+    }
+
+    /* About Section */
+    #about {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 1px 40px;
+      background: #f0f0f0;
+      color: #000;
+    }
+    #about .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    #about .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #00adb5;
+    }
+    #about .about-image {
+      flex: 1;
+      min-width: 300px;
+      height: auto;
+    }
+    #about .about-image img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+   /* Skills Section */
+    #skills {
+      background: #f0f0f0;
+      color: #000;
+    }
+    #skills h2 {
+      color: #00adb5;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .skills-table {
+      display: flex;
+      gap: 40px;
+      margin-top: 20px;
+    }
+    .skills-table .column {
+      flex: 1;
+    }
+    /* >>> изменено: черный цвет и жирный <<< */
+    .skills-table h3 {
+      color: #000;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    .skills-table ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .skills-table ul li {
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+      .skills-table {
+        flex-direction: column;
+      }
+    }
+
+
+    /* Work Section */
+    #work {
+      background: #f0f0f0;
+      color: #000;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0 40px;
+    }
+    #work h2 {
+      color: #00adb5;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    #work .job-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    /* три колонки */
+    #work .job {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    #work .job .col {
+      flex: 1;
+    }
+    #work .job .title   { flex: 0 0 30%; }
+    #work .job .date    { flex: 0 0 20%; }
+    #work .job .desc    { flex: 1; }
+    #work .job .date p {
+      font-style: italic;
+      color: #555;
+    }
+
+    /* ===== New Contact styles (from component) ===== */
+    /* container wrapper for contact section */
+    #contact {
+      background: white;
+      padding-left: 0;
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3) inset;
+    }
+
+    .section {
+      /* make sure vertical padding is consistent with other sections */
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      align-items: center;
+      justify-content: center;
+
+      width: min(90%, 800px);
+      margin: 0 auto;
+      padding: 1rem;
+      background: var(--background-light-color);
+      border-radius: 7px;
+
+      box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.07),
+        0px 2px 4px 0px rgba(0, 0, 0, 0.07), 0px 4px 8px 0px rgba(0, 0, 0, 0.07),
+        0px 8px 16px 0px rgba(0, 0, 0, 0.07), 0px 16px 32px 0px rgba(0, 0, 0, 0.07),
+        0px 32px 64px 0px rgba(0, 0, 0, 0.07);
+    }
+
+    .contact-image {
+      min-height: 125px;
+      min-width: 125px;
+      /* adjust this path to your actual image path */
+      background-image: url('87bd2224-ee42-49c3-917d-0fa779c862e0.jpg');
+      background-repeat: no-repeat;
+      background-position: top;
+      background-size: cover;
+
+      border-radius: 100%;
+      border: 5px solid #fff;
+      box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.6);
+      transform: translatey(0px);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translatey(0px);
+      }
+      50% {
+        box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+        transform: translatey(-20px);
+      }
+      100% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translatey(0px);
+      }
+    }
+
+    .contact-name {
+      text-align: center;
+      letter-spacing: 0.1rem;
+      font-size: 2rem;
+    }
+
+    .contact-data-wrapper {
+      display: grid;
+      align-items: center;
+      grid-template-columns: auto 1fr;
+      column-gap: 1rem;
+    }
+
+    .contact-link {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+
+    .contact-link:hover {
+      color: var(--text-color-hover);
+    }
+
+    /* icon placeholders — update paths to your SVGs if needed */
+    .contact-email-img {
+      width: 25px;
+      height: 25px;
+      background-image: url('email.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .contact-phone-img {
+      width: 25px;
+      height: 25px;
+      background-image: url('phone.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .contact-location-img {
+      width: 25px;
+      height: 25px;
+      background-image: url('location-pin.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .contact-container-summary {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    .contact-container-summary-link,
+    .contact-container-summary-link:link,
+    .contact-container-summary-link:visited {
+      color: var(--text-color-hover);
+      filter: brightness(0.5);
+    }
+
+    .contact-container-summary-link:hover,
+    .contact-container-summary-link:active {
+      filter: brightness(1);
+    }
+
+    /* Contact responsive tweaks */
+    @media (max-width: 768px) {
+      .contact-name {
+        font-size: 2.2rem;
+      }
+      .contact-link {
+        font-size: 1.4rem;
+      }
+      .contact-container {
+        padding: 2rem;
+      }
+      .contact-image {
+        min-height: 100px;
+        min-width: 100px;
+      }
+    }
+
+    /* Contact section heading style (if you want a big title) */
+    .section-title {
+      font-size: 2.5rem;
+      color: #00adb5;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    /* Contact small niceties */
+    #contact { padding-bottom: 60px; padding-top: 60px; }
+
+    /* Contact icons alignment for very small screens */
+    @media (max-width: 480px) {
+      .contact-data-wrapper {
+        grid-template-columns: auto 1fr;
+        column-gap: 1rem;
+      }
+    }
+    /* ===== End Contact styles ===== */
+
+    /* Contact section default title override removed - keep other styles intact */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #aaa;
+    }
+
+    /* Responsive for sidebar and other sections */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100px;
+      }
+      .sidebar a {
+        font-size: 0.8rem;
+        padding: 10px;
+      }
+      main {
+        margin-left: 100px;
+      }
+      #home h2 {
+        font-size: 2rem;
+      }
+      #about {
+        flex-direction: column;
+        padding: 50px 20px;
+      }
+      #about .about-image {
+        width: 100%;
+        margin-top: 20px;
+      }
+      #work .job {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<link rel="icon" href="page-logo.svg" type="image/x-icon">
+<body>
+  <div class="sidebar">
+    <a href="#home" class="name-btn">
+      <span class="big-name">Ihor</span>
+      <span class="small-role">Technical Engineer</span>
+    </a>
+    <a href="#about">About Me</a>
+    <a href="#skills">Skill Profile</a>
+    <a href="#work">Work Experience</a>
+    <a href="#contact">Contact</a>
+    <div class="socials">
+      <a href="#">in</a>
+      <a href="#">GH</a>
+    </div>
+  </div>
+
+  <main>
+    <section id="home">
+      <h2>Hi,<br>I am <span>Ihor Osypov</span>,<br>Support Technical Engineer</h2>
+      <p>IT Engineer</p>
+      <a href="#contact" class="contact-btn">Contact me!</a>
+      <div class="decor-right">scroll down →</div>
+    </section>
+
+    <section id="about">
+      <div class="about-text">
+        <h2>About Me</h2>
+        <br>
+        <p>
+          I have over six years of work experience in various roles related to engineering, production, and software development. My core competencies are in technical support, Integrations between internal and external systems, API requests, SQL database, and process optimization. I am passionate about solving complex problems, creating custom solutions, and delivering high-quality results.<br><br>
+          I am a friendly and supportive person with good communication skills and constant willingness to learn.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="87bd2224-ee42-49c3-917d-0fa779c862e0.jpg" alt="About Me Image">
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-table">
+        <div class="column">
+          <h3>Tools and Technologies</h3>
+          <ul>
+		    <li>• Data Base - MS SQL \ Oracle Database</li>
+            <li>• Linux Server Administration (Debian, Ubuntu)</li>
+			<li>• Microsoft Windows</li>
+            <li>• SOAP API</li>
+			<li>• REST API</li>
+			<li>• Integration between internal and external systems</li>
+            <li>• Google Chrome DevTools</li>
+			<li>• Google Tag Manager</li>
+			<li>• Google Analytics</li>
+			<li>• Selenium WebDriver</li>
+            <li>• Java (read of the code)</li>
+			<li>• Python (creating basic scripts)</li>
+			<li>• Visual Studio Code</li>
+			<li>• Microsoft Azure Active Directory</li>
+            <li>• Atlassian Jira</li>
+            <li>• Atlassian Confluence</li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>Analytical Skills and Methodologies</h3>
+          <ul>
+		    <li>• Leadership Skills</li>
+            <li>• Data Analysis</li>
+            <li>• Troubleshooting</li>
+			<li>• Coaching</li>
+			<li>• Project Management</li>
+            <li>• Testing</li>
+			<li>• Technical Support (L3)</li>
+			<li>• Operating Systems</li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>Languages</h3>
+          <ul>
+			<li>• Ukrainian - Proficient</li>
+            <li>• Russian – Proficient</li>
+            <li>• English – Upper Intermediate</li>
+            <li>• German – Elementary</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+	
+	
+<!-- Work Experience section -->
+   <section id="work">
+      <h2>Work Experience</h2>
+      <br>
+      <div class="job-container">
+        <div class="job">
+          <div class="col title">
+            <h3>Lead Support Specialist - Luxoft</h3>
+          </div>
+          <div class="col date">
+            <p><em>Oct 2022 – Present</em></p>
+          </div>
+          <div class="col desc">
+            <p>• Lead of support team in 2 internal projects,<br>
+			   • Communication between external\internal teams (Udemy, Linkedin,Cornerstone),<br>
+               • Coaching new employees,<br>
+               • Analyzing and creating company processes,<br>
+               • Automation of tasks processing in Windows,<br>
+			   • Updating data via REST API,<br>
+			   • Data source transfer (SQL),<br>
+               • Creating scripts in Python to automate tasks..
+            </p>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="col title">
+            <h3>Senior Support Specialist - Luxoft</h3>
+          </div>
+          <div class="col date">
+            <p><em>Jul 2022 – Sep 2022</em></p>
+          </div>
+          <div class="col desc">
+            <p>• Deploying an application on a linux server from the beginning in MS Cloud,<br>
+               • Working with Microsoft Azure Active Directory,<br>
+               • Testing of the new featers,<br>
+			   • Administraition of Database,<br>
+			   • Administraition of Linux servers where java application run,<br>
+               • Managing users permissions.
+            </p>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="col title">
+            <h3>Regular IT - Specialist - Luxoft</h3>
+          </div>
+          <div class="col date">
+            <p><em>Jul 2021 – Jun 2022</em></p>
+          </div>
+          <div class="col desc">
+            <p>• Creationg of SQL Viewes, Jobs<br>
+               • Deploying a new version of the application on Linux servers,<br>
+               • Working with bugs,<br>
+               • Monitoring of Linux logs.
+            </p>
+          </div>
+        </div>
+
+        <div class="job">
+          <div class="col title">
+            <h3>Junior Support Specialist - Luxoft</h3>
+          </div>
+          <div class="col date">
+            <p><em>Sep 2019 – Jun 2021</em></p>
+          </div>
+          <div class="col desc">
+            <p>• Working with Service Desc tickets,<br>
+               • Updating of Knowledge base,<br>
+               • Working with Jira,<br>
+               • Updating data via SOAP,<br>
+               • Monitoring of MS SQL Verifications.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="contact" class="section">
+      <h1 class="section-title">Contact</h1>
+
+      <div class="contact-container">
+        <div class="contact-image" aria-hidden="true"></div>
+
+        <h3 class="contact-name">Ihor Osypov</h3>
+
+        <div class="contact-data-wrapper">
+          <span class="contact-email-img icon" aria-hidden="true"></span>
+		  
+          <a class="contact-link" href="mailto:osipovigor22@gmail.com">
+            osipovigor22@gmail.com
+          </a>
+        </div>
+
+        <div class="contact-data-wrapper">
+          <span class="contact-phone-img icon" aria-hidden="true"></span>
+          <a class="contact-link" href="tel:+380678815883">
+            +380678815883
+          </a>
+        </div>
+
+        <div class="contact-data-wrapper">
+          <span class="contact-location-img icon" aria-hidden="true"></span>
+          <a
+            class="contact-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.google.com/maps/place/Dnipro,+Dnipropetrovsk+Oblast,+49000/@48.462408,34.8352063,11z/data=!3m1!4b1!4m6!3m5!1s0x40dbe3a8386f6dfb:0x6ebc0ebbdf7c0b06!8m2!3d48.464717!4d35.046183!16s%2Fm%2F0jw9kdg?entry=ttu&g_ep=EgoyMDI1MDkxMC4wIKXMDSoASAFQAw%3D%3D"
+          >
+            49000 Dnipro, Ukraine
+          </a>
+        </div>
+
+        <p class="contact-container-summary">
+          Thanks for visiting! You can contact me via
+          <a
+            class="contact-container-summary-link"
+            href="https://www.linkedin.com/in/ihor-osypov-5658ab103/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          or via
+          <a
+            class="contact-container-summary-link"
+            href="https://t.me/@Ihor_2202"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Telegram
+          </a>
+        </p>
+      </div>
+    </section>
+    <!-- ===== End replaced Contact Section ===== -->
+
+  </main>
+</body>
+</html>
