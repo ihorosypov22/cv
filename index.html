@@ -486,6 +486,52 @@
       #work .job {
         flex-direction: column;
       }
+	  
+    /* ————————— Общие правки для мобильных ————————— */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;       /* контент под сайдбаром */
+      }
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 10px;
+      }
+      .sidebar a {
+        border-bottom: none;
+        padding: 10px 8px;
+        font-size: 0.9rem;
+      }
+      main {
+        margin-left: 0;               /* убираем отступ */
+        width: 100%;
+      }
+      section {
+        padding: 60px 20px;           /* уменьшаем поля */
+      }
+      #home h2 {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Для совсем маленьких экранов */
+    @media (max-width: 480px) {
+      .sidebar {
+        flex-wrap: wrap;
+        text-align: center;
+      }
+      .socials {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+      .sidebar a {
+        flex: 1 1 45%;
+      }
+    
+
     }
   </style>
 </head>
@@ -707,7 +753,7 @@
           or via
           <a
             class="contact-container-summary-link"
-            href="https://t.me/@Ihor_2220"
+            href="https://t.me/@Ihor_2202"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -721,4 +767,3 @@
   </main>
 </body>
 </html>
-
