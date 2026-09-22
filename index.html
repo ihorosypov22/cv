@@ -420,8 +420,10 @@
         .name-btn {
           order: 1;
           width: auto;
-          padding: 6px 0;
+          padding: 6px 14px;
           border-bottom: none;
+          border-radius: 4px;
+          background: rgba(255, 255, 255, 0.06);
           text-align: left;
         }
         .big-name {
@@ -434,6 +436,15 @@
         .socials {
           order: 2;
           margin: 0;
+          gap: 6px;
+        }
+        .socials a {
+          display: inline-block;
+          padding: 6px 14px;
+          font-size: 0.8rem;
+          font-weight: bold;
+          border-radius: 4px;
+          background: rgba(255, 255, 255, 0.06);
         }
         .nav-links {
           order: 3;
@@ -511,12 +522,10 @@
         .small-role {
           display: none;
         }
-        .nav-links a {
+        .nav-links a,
+        .socials a {
           padding: 6px 10px;
           font-size: 0.75rem;
-        }
-        .socials a {
-          font-size: 1.1rem;
         }
       }
     </style>
