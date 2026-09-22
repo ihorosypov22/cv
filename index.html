@@ -58,6 +58,9 @@
       .nav-links {
         width: 100%;
       }
+      .mobile-brand-bar {
+        display: none;
+      }
       .name-btn {
         display: block;
         text-align: center;
@@ -404,27 +407,22 @@
           flex-direction: column;
         }
 
-        /* Sidebar becomes a compact top bar:
-           row 1 = name + social icons, row 2 = nav links wrapped & centered */
+        /* Sidebar becomes a compact top bar with just the nav links.
+           The name + social icons move down into the footer (see .mobile-brand-bar). */
         .sidebar {
           position: relative;
           width: 100%;
           height: auto;
           flex-direction: row;
           flex-wrap: wrap;
-          justify-content: space-between;
+          justify-content: center;
           align-items: center;
           padding: 8px 15px;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
         }
-        .name-btn {
-          order: 1;
-          width: auto;
-          padding: 6px 14px;
-          border-bottom: none;
-          border-radius: 4px;
-          background: rgba(255, 255, 255, 0.06);
-          text-align: left;
+        .sidebar > .name-btn,
+        .sidebar > .socials {
+          display: none;
         }
         .big-name {
           font-size: 1.2rem;
@@ -433,27 +431,12 @@
           font-size: 0.7rem;
           line-height: 1.4;
         }
-        .socials {
-          order: 2;
-          margin: 0;
-          gap: 6px;
-        }
-        .socials a {
-          display: inline-block;
-          padding: 6px 14px;
-          font-size: 0.8rem;
-          font-weight: bold;
-          border-radius: 4px;
-          background: rgba(255, 255, 255, 0.06);
-        }
         .nav-links {
-          order: 3;
-          flex: 1 0 100%;
+          width: 100%;
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
           gap: 6px;
-          margin-top: 8px;
         }
         .nav-links a {
           display: inline-block;
@@ -463,6 +446,39 @@
           border-bottom: none;
           border-radius: 4px;
           background: rgba(255, 255, 255, 0.06);
+        }
+
+        /* Name + social icons, relocated to the bottom of the page */
+        .mobile-brand-bar {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 16px;
+        }
+        .brand-btn {
+          display: inline-block;
+          padding: 6px 14px;
+          border-radius: 4px;
+          background: rgba(255, 255, 255, 0.06);
+          text-decoration: none;
+          color: #fff;
+          text-align: center;
+        }
+        .brand-socials {
+          display: flex;
+          gap: 6px;
+        }
+        .brand-socials a {
+          display: inline-block;
+          padding: 6px 14px;
+          font-size: 0.8rem;
+          font-weight: bold;
+          border-radius: 4px;
+          background: rgba(255, 255, 255, 0.06);
+          text-decoration: none;
+          color: #fff;
         }
 
         main {
@@ -523,7 +539,8 @@
           display: none;
         }
         .nav-links a,
-        .socials a {
+        .brand-btn,
+        .brand-socials a {
           padding: 6px 10px;
           font-size: 0.75rem;
         }
@@ -742,7 +759,21 @@
         </div>
       </section>
 
-      <footer>&copy; 2026 Ihor Osypov. All rights reserved.</footer>
+      <footer>
+        <div class="mobile-brand-bar">
+          <a href="#home" class="brand-btn">
+            <span class="big-name">Ihor</span>
+            <span class="small-role">Lead Support Specialist</span>
+          </a>
+          <div class="brand-socials">
+            <a href="https://www.linkedin.com/in/ihor-osypov-5658ab103/" target="_blank" rel="noopener noreferrer"
+              >in</a
+            >
+            <a href="https://github.com/ihorosypov22" target="_blank" rel="noopener noreferrer">GH</a>
+          </div>
+        </div>
+        &copy; 2026 Ihor Osypov. All rights reserved.
+      </footer>
     </main>
   </body>
 </html>
