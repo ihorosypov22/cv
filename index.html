@@ -55,6 +55,9 @@
         background: #00adb5;
         color: #0f0f0f;
       }
+      .nav-links {
+        width: 100%;
+      }
       .name-btn {
         display: block;
         text-align: center;
@@ -175,33 +178,19 @@
 
       /* ===== About Section ===== */
       #about {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 40px;
-        padding: 100px 40px;
         background: #f0f0f0;
         color: #000;
       }
       #about .about-text {
-        flex: 1;
-        min-width: 300px;
+        width: 100%;
       }
       #about .about-text h2 {
         font-size: 2rem;
         margin-bottom: 20px;
         color: #00adb5;
       }
-      #about .about-image {
-        flex: 1;
-        min-width: 300px;
-        height: auto;
-      }
-      #about .about-image img {
-        width: 100%;
-        border-radius: 10px;
-        display: block;
+      #about .about-text p {
+        font-size: 1.1rem;
       }
 
       /* ===== Skills Section ===== */
@@ -409,24 +398,62 @@
         font-size: 0.85rem;
       }
 
-      /* ===== Responsive ===== */
+      /* ===== Responsive: tablets & phones ===== */
       @media (max-width: 768px) {
         body {
           flex-direction: column;
         }
+
+        /* Sidebar becomes a compact top bar:
+           row 1 = name + social icons, row 2 = nav links wrapped & centered */
         .sidebar {
           position: relative;
           width: 100%;
           height: auto;
           flex-direction: row;
+          flex-wrap: wrap;
           justify-content: space-between;
-          padding: 0 10px;
+          align-items: center;
+          padding: 8px 15px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
         }
-        .sidebar a {
+        .name-btn {
+          order: 1;
+          width: auto;
+          padding: 6px 0;
           border-bottom: none;
-          padding: 10px 8px;
-          font-size: 0.85rem;
+          text-align: left;
         }
+        .big-name {
+          font-size: 1.2rem;
+        }
+        .small-role {
+          font-size: 0.7rem;
+          line-height: 1.4;
+        }
+        .socials {
+          order: 2;
+          margin: 0;
+        }
+        .nav-links {
+          order: 3;
+          flex: 1 0 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 6px;
+          margin-top: 8px;
+        }
+        .nav-links a {
+          display: inline-block;
+          width: auto;
+          padding: 6px 14px;
+          font-size: 0.8rem;
+          border-bottom: none;
+          border-radius: 4px;
+          background: rgba(255, 255, 255, 0.06);
+        }
+
         main {
           margin-left: 0;
           width: 100%;
@@ -440,21 +467,28 @@
         #home h2 {
           font-size: 1.8rem;
         }
+        .decor-right {
+          display: none;
+        }
+
         #about {
-          flex-direction: column;
           padding: 50px 20px;
         }
-        #about .about-image {
-          width: 100%;
-          margin-top: 20px;
+
+        .skills-table {
+          flex-direction: column;
+          gap: 30px;
         }
+
         #work .job {
           flex-direction: column;
+          gap: 8px;
         }
         #work .job .title,
         #work .job .date {
           flex: 1 1 auto;
         }
+
         .contact-name {
           font-size: 1.8rem;
         }
@@ -472,15 +506,17 @@
 
       @media (max-width: 480px) {
         .sidebar {
-          flex-wrap: wrap;
-          text-align: center;
+          padding: 8px 12px;
         }
-        .socials {
-          margin-top: 0;
-          margin-bottom: 10px;
+        .small-role {
+          display: none;
         }
-        .sidebar a {
-          flex: 1 1 45%;
+        .nav-links a {
+          padding: 6px 10px;
+          font-size: 0.75rem;
+        }
+        .socials a {
+          font-size: 1.1rem;
         }
       }
     </style>
@@ -491,10 +527,12 @@
         <span class="big-name">Ihor</span>
         <span class="small-role">Lead Support Specialist</span>
       </a>
-      <a href="#about">About Me</a>
-      <a href="#skills">Skill Profile</a>
-      <a href="#work">Work Experience</a>
-      <a href="#contact">Contact</a>
+      <div class="nav-links">
+        <a href="#about">About Me</a>
+        <a href="#skills">Skill Profile</a>
+        <a href="#work">Work Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
       <div class="socials">
         <a href="https://www.linkedin.com/in/ihor-osypov-5658ab103/" target="_blank" rel="noopener noreferrer">in</a>
         <a href="https://github.com/ihorosypov22" target="_blank" rel="noopener noreferrer">GH</a>
@@ -515,14 +553,11 @@
           <br />
           <p>
             IT professional with over seven years of experience across engineering, production, technical support, and software development. Experienced in supporting enterprise applications, integrating internal and external systems, working with APIs and SQL databases, troubleshooting complex technical issues, and optimizing business processes.
-			<br /><br />
-			Strong problem-solving skills with a practical, hands-on approach to investigating root causes, analyzing data, and developing custom technical solutions. Experienced in collaborating with developers, system administrators, vendors, and business stakeholders to resolve issues and deliver reliable solutions.
-			<br /><br />
-			Passionate about automation, system integrations, process improvement, and finding efficient solutions to complex technical challenges. Proactive, detail-oriented, and comfortable working both independently and as part of a cross-functional team, with a strong commitment to continuous learning and delivering high-quality results.
+            <br /><br />
+            Strong problem-solving skills with a practical, hands-on approach to investigating root causes, analyzing data, and developing custom technical solutions. Experienced in collaborating with developers, system administrators, vendors, and business stakeholders to resolve issues and deliver reliable solutions.
+            <br /><br />
+            Passionate about automation, system integrations, process improvement, and finding efficient solutions to complex technical challenges. Proactive, detail-oriented, and comfortable working both independently and as part of a cross-functional team, with a strong commitment to continuous learning and delivering high-quality results.
           </p>
-        </div>
-        <div class="about-image">
-          <img src="Gemini_Generated_Image_yhh2fyyhh2fyyhh2.jpg" alt="Ihor Osypov" />
         </div>
       </section>
 
@@ -549,7 +584,7 @@
               <li>Microsoft Azure Active Directory</li>
               <li>Atlassian Jira</li>
               <li>Atlassian Confluence</li>
-			  <li>AI Tools: Claude, Amazon Quick</li>
+              <li>AI Tools: Claude, Amazon Quick</li>
             </ul>
           </div>
           <div class="column">
